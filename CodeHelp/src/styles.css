@@ -1,14 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-}
-
-div {
-  border: 2px solid aquamarine;
-  font-size: 2rem;
-  padding: 20px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
