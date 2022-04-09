@@ -1,1 +1,7 @@
-<p>questions works!</p>
+<div>
+  <div *ngFor="let question of questions">
+    <a [routerLink]="['/questions', question.id]">{{question.title}}</a>
+    <h4>{{question.created_date}}</h4>
+    <hr>
+  </div>
+</div>
