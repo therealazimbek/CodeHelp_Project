@@ -1,1 +1,11 @@
-<p>question-detail works!</p>
+<div *ngIf="question">
+  <h1>{{question.title}}</h1>
+  <p>{{question.created_date}}</p>
+  <hr>
+  <div>
+    <div *ngFor="let message of messages">
+      <h3>{{message.body}}</h3>
+      <p>{{message.question_id}}</p>
+    </div>
+  </div>
+</div>
