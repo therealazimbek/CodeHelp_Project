@@ -1,0 +1,8 @@
+<div *ngFor="let user of users">
+  <div>
+    <img src="{{ user.avatar }}" alt="" />
+    <h5>
+      <a [routerLink]="['/users', user.username]">{{ user.username }}</a>
+    </h5>
+  </div>
+</div>

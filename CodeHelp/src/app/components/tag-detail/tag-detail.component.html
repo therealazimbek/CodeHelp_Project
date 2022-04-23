@@ -1,0 +1,16 @@
+<div *ngIf="tag">
+  <button backButton>Back</button>
+  <p>{{ tag.description }}</p>
+  <div *ngFor="let question of questions">
+    <h5>
+      <a [routerLink]="['/questions', question.id]">{{ question.title }}</a>
+    </h5>
+  </div>
+  <div *ngIf="questions.length === 0">
+    <h5>Sorry, no questions related to this tag</h5>
+  </div>
+</div>
+
+<div *ngIf="!tag">
+  <app-not-found-page></app-not-found-page>
+</div>
