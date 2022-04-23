@@ -9,6 +9,13 @@ import { QuestionDetailComponent } from './components/question-detail/question-d
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { AboutComponent } from './components/about/about.component';
+import { TagsComponent } from './components/tags/tags.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { TagDetailComponent } from './components/tag-detail/tag-detail.component';
+import { BackButtonDirective } from './directives/back-button.directive';
+import { UsersComponent } from './components/users/users.component';
+import { NewQuestionComponent } from './components/new-question/new-question.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +25,20 @@ import { AboutComponent } from './components/about/about.component';
     QuestionDetailComponent,
     UserPageComponent,
     NotFoundPageComponent,
-    AboutComponent
+    AboutComponent,
+    TagsComponent,
+    LoginPageComponent,
+    TagDetailComponent,
+    BackButtonDirective,
+    UsersComponent,
+    NewQuestionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

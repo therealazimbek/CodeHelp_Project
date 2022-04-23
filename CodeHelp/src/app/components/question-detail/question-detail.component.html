@@ -1,11 +1,39 @@
-<div *ngIf="question">
-  <h1>{{question.title}}</h1>
-  <p>{{question.created_date}}</p>
-  <hr>
+<div *ngIf="question && user">
+  <button backButton>Back</button>
+  <h1>{{ question.title }}</h1>
+  <p>
+    @<a [routerLink]="['/users', user.username]">{{ user.username }}</a>
+  </p>
+  <p>{{ question.created_date | date: "HH:mm, dd/MM/yyyy" }}</p>
+  <br />
+  <p>{{ question.body }}</p>
   <div>
-    <div *ngFor="let message of messages">
-      <h3>{{message.body}}</h3>
-      <p>{{message.question_id}}</p>
+    <p>Tags:</p>
+    <div *ngFor="let tag of tags" class="tag-list">
+      <h6>
+        <a [routerLink]="['/tags', tag.name]">{{ tag.name }}</a>
+      </h6>
     </div>
   </div>
+  <hr />
+  <div>
+    <div *ngFor="let message of messages">
+      <p>
+        @<a [routerLink]="['/users', message.username]">{{
+          message.username
+        }}</a>
+      </p>
+
+      <h6>{{ message.body }}</h6>
+      <pre *ngIf="message.code_field">
+        <code>{{message.code_field}}</code>
+      </pre>
+      <p>{{ message.created_date | date: "HH:mm, dd/MM/yyyy" }}</p>
+      <hr />
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!question">
+  <app-not-found-page></app-not-found-page>
 </div>

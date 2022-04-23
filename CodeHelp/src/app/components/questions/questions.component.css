@@ -1,0 +1,15 @@
+.newquestion{
+    width:120px;
+    padding:5px;
+    background-color: #0d6efd;
+    border:1px solid transparent;
+    border-radius: 0.25rem;
+    margin-bottom: 10px;
+}
+.newquestion:hover{
+    background-color: rgb(13,85,253);
+}
+.newquestion_link{
+    color:white;
+    text-decoration: none;
+}
