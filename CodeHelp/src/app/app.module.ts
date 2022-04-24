@@ -17,6 +17,7 @@ import { BackButtonDirective } from './directives/back-button.directive';
 import { UsersComponent } from './components/users/users.component';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
 import { FormsModule } from '@angular/forms';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     UsersComponent,
     NewQuestionComponent,
     UsersComponent,
+    SignUpComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

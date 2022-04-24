@@ -23,17 +23,6 @@
       "code_field": ""
     },
     {
-      "id": 2,
-      "title": "test",
-      "body": "test",
-      "user": null,
-      "tag": null,
-      "created_date": "2022-04-24T10:35:00.412Z",
-      "updated_date": "2022-04-24T10:35:00.412Z",
-      "is_active": true,
-      "code_field": "tesd"
-    },
-    {
       "id": 30,
       "title": "test2",
       "body": "test2",

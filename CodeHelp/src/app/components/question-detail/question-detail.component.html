@@ -1,34 +1,28 @@
-<div *ngIf="question && user && tag">
-  <button backButton>Back</button>
+<button backButton class="btn btn-dark">Back</button>
+<div *ngIf="question && user && tag" class="question">
   <h1>{{ question.title }}</h1>
-  <p>
+  <p class="username">
     @<a [routerLink]="['/users', user.id]">{{ user.username }}</a>
   </p>
-  <p>{{ question.created_date | date: "HH:mm, dd/MM/yyyy" }}</p>
+  <p>Asked: {{ question.created_date | date: "HH:mm, dd/MM/yyyy" }}</p>
   <br />
-  <p>{{ question.body }}</p>
+  <p class="body">{{ question.body }}</p>
   <br />
   <pre *ngIf="question.code_field">
       <code>{{question.code_field}}</code>
     </pre>
   <div>
-    <p>Tag:</p>
-
-    <a [routerLink]="['/tags', tag.id]">{{ tag.name }}</a>
+    <a [routerLink]="['/tags', tag.id]" class="tag">{{ tag.name }}</a>
   </div>
+</div>
+<div *ngFor="let message of messages">
+  <p class="username">
+    @<a [routerLink]="['/users', message.user]">{{ message.user }}</a>
+  </p>
+  <p>Answered: {{ message.created_date | date: "HH:mm, dd/MM/yyyy" }}</p>
+  <h6>{{ message.body }}</h6>
+  <pre *ngIf="message.code_field">
+    <code>{{message.code_field}}</code>
+  </pre>
   <hr />
-  <div>
-    <div *ngFor="let message of messages">
-      <p>
-        @<a [routerLink]="['/users', message.user]">{{ message.user }}</a>
-      </p>
-
-      <h6>{{ message.body }}</h6>
-      <pre *ngIf="message.code_field">
-        <code>{{message.code_field}}</code>
-      </pre>
-      <p>{{ message.created_date | date: "HH:mm, dd/MM/yyyy" }}</p>
-      <hr />
-    </div>
-  </div>
 </div>

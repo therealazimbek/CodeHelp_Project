@@ -1,4 +1,39 @@
-p, .tag-list {
+.question {
+  background-color: azure;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+a {
+  font-size: 12px;
+  text-decoration: none;
+}
+p,
+.tag-list {
   display: inline-block;
   margin-left: 10px;
+  font-size: 12px;
+}
+
+p.body {
+  font-size: 16px;
+}
+
+p.username {
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+p a {
+  text-decoration: none;
+  color: white;
+}
+
+.tag {
+  background-color: darkgrey;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
 }

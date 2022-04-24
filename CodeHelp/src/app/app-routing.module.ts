@@ -12,6 +12,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { TagDetailComponent } from './components/tag-detail/tag-detail.component';
 import { UsersComponent } from './components/users/users.component';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'tags', component: TagsComponent },
   { path: 'tags/:tagID', component: TagDetailComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'signup', component: SignUpComponent },
   { path: 'users/:userID', component: UserPageComponent },
   { path: 'users', component: UsersComponent },
   { path: 'about', component: AboutComponent },

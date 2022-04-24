@@ -1,6 +1,16 @@
 <div>
-  Tags:
-  <div *ngFor="let tag of tags">
-    <a [routerLink]="['/tags', tag.id]">{{ tag.name }}</a>
+  <h3>Tags</h3>
+  <p>
+    A tag is a keyword or label that categorizes your question with other,
+    similar questions. Using the right tags makes it easier for others to find
+    and answer your question.
+  </p>
+</div>
+
+<div class="container">
+  <div *ngFor="let tag of tags" class="mcard">
+    <div class="header">
+      <a [routerLink]="['/tags', tag.id]">{{ tag.name }}</a>
+    </div>
   </div>
 </div>
