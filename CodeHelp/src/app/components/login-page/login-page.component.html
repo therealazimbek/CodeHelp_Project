@@ -17,5 +17,7 @@
       </label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+    <h5 *ngIf="!logged">Wrong email or password!</h5>
   </form>
 </main>
