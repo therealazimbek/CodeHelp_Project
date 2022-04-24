@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
     BackButtonDirective,
     UsersComponent,
     NewQuestionComponent
+    UsersComponent
   ],
   imports: [
     BrowserModule,
