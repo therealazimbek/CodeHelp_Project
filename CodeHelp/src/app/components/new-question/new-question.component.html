@@ -1,0 +1,26 @@
+<form>
+    <h2>New Question</h2>
+    <div>
+        <h4>Title</h4>
+        <h6>Be specific and imagine you're asking a question to another person</h6>
+        <input [(ngModel)]="title" [ngModelOptions]="{standalone:true}" type="text" placeholder="e.g. Is there a Python function to find the certain symbol of string?" id="title">
+        <p *ngIf="title_empty">Write a question!</p>
+        <h4>Body</h4>
+        <h6>Include all the information someone would need to answer your question</h6>
+        <textarea cols="30" rows="10" id="body" [(ngModel)]="body" [ngModelOptions]="{standalone:true}"></textarea>
+        <p *ngIf="body_empty">Explain the question!</p>
+        <h4>Tags</h4>
+        <h6>Choose a tag to describe what your question is about</h6>
+        <select [(ngModel)]="tag" [ngModelOptions]="{standalone:true}">
+            <option>none</option>
+            <option *ngFor="let t of tags">{{t.name}}</option>
+        </select>
+        <p *ngIf="tag_empty">Choose the tag!</p>
+        <button (click)="check()" class="btn btn-lg btn-primary" id="submit">Submit</button>
+        <div *ngIf="isCompleted">
+            <h5>Are you sure there is no such questions on our site?</h5>
+            <button (click)="newquestion()" backButton class="btn btn-lg btn-primary subm_part">Yes</button>
+            <button (click)="recheck()" class="subm_part btn btn-lg btn-primary">No, need to change my question</button>
+        </div>
+    </div>
+</form>

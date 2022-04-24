@@ -14,6 +14,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { TagDetailComponent } from './components/tag-detail/tag-detail.component';
 import { BackButtonDirective } from './directives/back-button.directive';
 import { UsersComponent } from './components/users/users.component';
+import { NewQuestionComponent } from './components/new-question/new-question.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,14 @@ import { UsersComponent } from './components/users/users.component';
     LoginPageComponent,
     TagDetailComponent,
     BackButtonDirective,
+    UsersComponent,
+    NewQuestionComponent
     UsersComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
