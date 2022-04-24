@@ -5,12 +5,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Messages } from 'src/test_backend/messages';
 import { Tags } from 'src/test_backend/tags';
 import { Users } from 'src/test_backend/users';
+import { AuthToken } from '../models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceService {
   private apiURL = 'http://localhost:5000';
+  private base_url='http://localhost:8000';
 
   constructor(private http: HttpClient) {}
 
@@ -32,5 +34,11 @@ export class ServiceService {
 
   getUser(id: number): Observable<Users> {
     return this.http.get<Users>(`${this.apiURL}/users/${id}/`);
+  }
+
+  login(username:string,password:string):Observable<AuthToken>{
+    return this.http.post<AuthToken>(`${this.base_url}/api/login/`,{
+      username,password
+    })
   }
 }

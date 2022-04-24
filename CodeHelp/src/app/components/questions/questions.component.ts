@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Questions, question_list } from '../../../test_backend/questions';
 import { QuestionsService } from 'src/app/services/questions.service';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-questions',
@@ -8,11 +9,16 @@ import { QuestionsService } from 'src/app/services/questions.service';
   styleUrls: ['./questions.component.css'],
 })
 export class QuestionsComponent implements OnInit {
+  logged=true;      //while backend is not ready, setting it true to let AskQuestion button be showed
   questions: Questions[] | undefined;
 
   constructor(private service: QuestionsService) {}
 
   ngOnInit(): void {
+
+    const access=localStorage.getItem('access');
+    if (access) this.logged=true;
+
     this.service.getQuestions().subscribe((questions) => {
       this.questions = questions;
       this.questions.sort((q1, q2) => {
@@ -24,3 +30,4 @@ export class QuestionsComponent implements OnInit {
     });
   }
 }
+
