@@ -5,7 +5,7 @@ export interface Questions {
   title: string;
   body: string;
   user: number;
-  tags: number[];
+  tag: number;
   created_date: Date;
   updated_date: Date;
   is_active: boolean;
@@ -18,7 +18,7 @@ export let question_list = [
     title: 'How to sum a list in Python?',
     body: 'Hello guys! I am new to Python and do not know how tp sum a list. Can anybody help me?',
     user: 1,
-    tags: [1],
+    tag: 1,
     created_date: new Date('2022-01-17T15:24:00'),
     updated_date: new Date('2022-01-17T15:34:10'),
     is_active: true,
@@ -29,7 +29,7 @@ export let question_list = [
     title: 'How to activate virtual environment?',
     body: 'Hi! How to activate newly created venv?',
     user: 2,
-    tags: [3],
+    tag: 3,
     created_date: new Date('2022-01-21T12:21:00'),
     updated_date: new Date('2022-01-21T12:23:45'),
     is_active: false,

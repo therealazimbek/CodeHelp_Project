@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Tags, tags_list } from 'src/test_backend/tags';
 import { Questions, question_list } from 'src/test_backend/questions';
+import { ServiceService } from 'src/app/services/service.service';
+import { QuestionsService } from 'src/app/services/questions.service';
 
 @Component({
   selector: 'app-tag-detail',
@@ -10,18 +12,32 @@ import { Questions, question_list } from 'src/test_backend/questions';
   styleUrls: ['./tag-detail.component.css'],
 })
 export class TagDetailComponent implements OnInit {
-  tags = tags_list;
   tag: Tags | undefined;
-  questions = question_list;
+  questions: Questions[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: ServiceService,
+    private questionService: QuestionsService
+  ) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const tagNameFromRoute = String(routeParams.get('tagName'));
-    this.tag = this.tags.find((tag) => tag.name === tagNameFromRoute);
-    this.questions = this.questions.filter((question) => {
-      return question.tags.find((id) => id === this.tag?.id);
-    });
+    const tagIDFromRoute = Number(routeParams.get('tagID'));
+    this.service.getTag(tagIDFromRoute).subscribe(
+      (tag) => {
+        this.tag = tag;
+        this.questionService.getQuestions().subscribe(
+          (questions) =>
+            (this.questions = questions.filter((question) => {
+              return question.tag === this.tag?.id;
+            }))
+        );
+      },
+      (error) => {
+        this.router.navigateByUrl(`notagfound`);
+      }
+    );
   }
 }

@@ -1,6 +1,6 @@
 <div>
   Tags:
   <div *ngFor="let tag of tags">
-    <a [routerLink]="['/tags', tag.name]">{{ tag.name }}</a>
+    <a [routerLink]="['/tags', tag.id]">{{ tag.name }}</a>
   </div>
 </div>
