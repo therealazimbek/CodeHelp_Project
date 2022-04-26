@@ -13,3 +13,6 @@
     color:white;
     text-decoration: none;
 }
+.container{
+    min-height: 70vh;
+}

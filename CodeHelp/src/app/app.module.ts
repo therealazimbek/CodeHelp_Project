@@ -18,6 +18,7 @@ import { UsersComponent } from './components/users/users.component';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
 import { FormsModule } from '@angular/forms';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { EditQuestionComponent } from './components/edit-question/edit-question.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     NewQuestionComponent,
     UsersComponent,
     SignUpComponent,
+    EditQuestionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
