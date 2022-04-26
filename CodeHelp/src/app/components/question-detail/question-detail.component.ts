@@ -54,4 +54,8 @@ export class QuestionDetailComponent implements OnInit {
       }
     );
   }
+
+  edit() {
+    this.router.navigateByUrl(`/questions/${this.question?.id}/edit`)
+  }
 }

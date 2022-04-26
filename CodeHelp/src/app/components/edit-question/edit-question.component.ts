@@ -5,6 +5,7 @@ import { Questions } from 'src/test_backend/questions';
 import { ServiceService } from 'src/app/services/service.service';
 import { Tags } from 'src/test_backend/tags';
 import { Users } from 'src/test_backend/users';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-edit-question',
@@ -16,6 +17,7 @@ export class EditQuestionComponent implements OnInit {
   question: Questions | undefined;
   tags: Tags[] = [];
   users: Users[] = [];
+  id = 0
   title = '';
   body = '';
   tag: number = -1;
@@ -27,13 +29,15 @@ export class EditQuestionComponent implements OnInit {
   tag_empty = false;
   isCompleted = false;
 
-  constructor(private route: ActivatedRoute,private service: QuestionsService,private tagService: ServiceService) { }
+  constructor(private route: ActivatedRoute,private service: QuestionsService,private tagService: ServiceService,
+              private router: Router) { }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const questionId = Number(routeParams.get('questionID'));
     this.service.getQuestion(questionId).subscribe((question) => {
         this.question = question;
+        this.id=question.id
         this.title=question.title;
         this.body=question.body;
         this.tag=question.tag;
@@ -73,7 +77,7 @@ export class EditQuestionComponent implements OnInit {
   }
   editquestion() {
     this.question = {
-      id: 30,
+      id: this.id,
       title: this.title,
       body: this.body,
       user: +this.user,
@@ -84,10 +88,13 @@ export class EditQuestionComponent implements OnInit {
       code_field: this.codefield,
     };
     console.log(this.question);
-    console.log(this.tag);
+    console.log(this.id);
 
     this.service
       .updateQuestion(this.question)
       .subscribe((question) => (this.question = question));
+    this.router.navigateByUrl(`/questions/${this.question?.id}`)
+
   }
+
 }

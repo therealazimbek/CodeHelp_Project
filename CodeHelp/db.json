@@ -24,14 +24,36 @@
     },
     {
       "id": 30,
-      "title": "test2",
-      "body": "test2",
-      "user": 3,
-      "tag": 3,
-      "created_date": "2022-04-24T10:42:32.438Z",
-      "updated_date": "2022-04-24T10:42:32.438Z",
+      "title": "test5 upddd",
+      "body": "regre",
+      "user": 2,
+      "tag": 2,
+      "created_date": "2022-04-26T16:31:32.814Z",
+      "updated_date": "2022-04-26T16:31:32.814Z",
       "is_active": true,
-      "code_field": "def hi():\n    print('hi')"
+      "code_field": "gerg"
+    },
+    {
+      "id": 33,
+      "title": "test3 updated",
+      "body": "testdvdv",
+      "user": 1,
+      "tag": 2,
+      "created_date": "2022-04-26T16:34:04.396Z",
+      "updated_date": "2022-04-26T16:34:04.396Z",
+      "is_active": true,
+      "code_field": "print('Hello world')"
+    },
+    {
+      "id": 34,
+      "title": "test4",
+      "body": "regre",
+      "user": 3,
+      "tag": 1,
+      "created_date": "2022-04-26T16:33:15.184Z",
+      "updated_date": "2022-04-26T16:33:15.184Z",
+      "is_active": true,
+      "code_field": "gerg"
     }
   ],
   "messages": [

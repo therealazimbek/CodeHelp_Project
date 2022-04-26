@@ -1,4 +1,5 @@
 <button backButton class="btn btn-dark">Back</button>
+<button class="btn btn-primary" (click)="edit()">Update</button>
 <div *ngIf="question && user && tag" class="question">
   <h1>{{ question.title }}</h1>
   <p class="username">
