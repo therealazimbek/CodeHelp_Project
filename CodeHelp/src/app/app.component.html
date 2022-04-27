@@ -30,20 +30,19 @@
     </ul>
 
     <div class="col-md-3 text-end">
-      <button
-        (click)="goToPage('login')"
-        type="button"
-        class="btn btn-outline-primary me-2"
-      >
-        Login
-      </button>
-      <button
-        (click)="goToPage('signup')"
-        type="button"
-        class="btn btn-primary"
-      >
-        Sign-up
-      </button>
+      <div *ngIf="logged">
+        <button (click)="goToPage('login')" type="button" class="btn btn-outline-primary me-2">
+          Login
+        </button>
+        <button (click)="goToPage('signup')" type="button" class="btn btn-primary">
+          Sign-up
+        </button>
+      </div>
+      <div *ngIf="!logged">
+        <button (click)="logout()" type="button" class="btn btn-primary">
+          Logout
+        </button>
+      </div>
     </div>
   </header>
 
@@ -59,7 +58,4 @@
        <span class="text-muted">&copy; 2022 CodeHelp, University Project</span>
      </div>
    </footer> 
-   <!--<footer>
-      <span class="text-muted">&copy; 2022 CodeHelp, University Project</span>
-  </footer>-->
 </div>
