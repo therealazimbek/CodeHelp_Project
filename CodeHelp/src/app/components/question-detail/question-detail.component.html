@@ -9,9 +9,7 @@
   <br />
   <p class="body">{{ question.body }}</p>
   <br />
-  <pre *ngIf="question.code_field">
-      <code>{{question.code_field}}</code>
-    </pre>
+  <pre *ngIf="question.code_field"><code>{{question.code_field}}</code></pre>
   <div>
     <a [routerLink]="['/tags', tag.id]" class="tag">{{ tag.name }}</a>
   </div>

@@ -4,14 +4,14 @@
       <div class="block">
         <h4>Title</h4>
         <h6>Be specific and imagine you're asking a question to another person</h6>
-        <input [(ngModel)]="title" [ngModelOptions]="{ standalone: true }" type="text" placeholder="e.g. Is there a Python function to find the certain symbol of string?" 
+        <input [(ngModel)]="title" [ngModelOptions]="{ standalone: true }" type="text" placeholder="e.g. Is there a Python function to find the certain symbol of string?"
                id="title" value="{{title}}"/>
         <p *ngIf="title_empty">Write a question!</p>
       </div>
       <div class="block">
         <h4>Body</h4>
         <h6>Include all the information about your question</h6>
-        <textarea cols="30" rows="10" id="body" [(ngModel)]="body" [ngModelOptions]="{ standalone: true }" 
+        <textarea cols="30" rows="10" id="body" [(ngModel)]="body" [ngModelOptions]="{ standalone: true }"
                   placeholder="I have a problem with realization!" value="{{body}}"></textarea>
         <p *ngIf="body_empty">Explain the question!</p>
       </div>
@@ -35,7 +35,7 @@
           <h4>Tag</h4>
           <h6>Choose a tag of your question</h6>
           <select [(ngModel)]="tag" [ngModelOptions]="{ standalone: true }">
-            <option>tag</option>
+            <option>{{this.tag}}</option>
             <option *ngFor="let t of tags">{{ t.id }}</option>
           </select>
           <p *ngIf="tag_empty">Choose the tag!</p>
@@ -55,4 +55,3 @@
       </div>
     </div>
   </form>
-  

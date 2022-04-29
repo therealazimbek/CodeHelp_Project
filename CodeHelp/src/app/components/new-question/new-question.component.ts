@@ -55,7 +55,7 @@ export class NewQuestionComponent implements OnInit {
   }
   newquestion() {
     this.question = {
-      id: 34,
+      id: 41,
       title: this.title,
       body: this.body,
       user: +this.user,
