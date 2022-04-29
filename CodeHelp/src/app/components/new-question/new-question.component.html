@@ -26,7 +26,7 @@
         <h6>Choose a user</h6>
         <select [(ngModel)]="user" [ngModelOptions]="{ standalone: true }">
           <option>none</option>
-          <option *ngFor="let u of users">{{ u.id }}</option>
+          <option *ngFor="let u of users">{{ u.first_name }} {{ u.second_name }}</option>
         </select>
         <p *ngIf="user_empty">Choose the user!</p>
       </div>
@@ -35,7 +35,7 @@
         <h6>Choose a tag of your question</h6>
         <select [(ngModel)]="tag" [ngModelOptions]="{ standalone: true }">
           <option>none</option>
-          <option *ngFor="let t of tags">{{ t.id }}</option>
+          <option *ngFor="let t of tags">{{ t.name }}</option>
         </select>
         <p *ngIf="tag_empty">Choose the tag!</p>
       </div>
