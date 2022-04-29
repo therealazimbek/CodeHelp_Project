@@ -11,8 +11,8 @@
   <br />
   <pre *ngIf="question.code_field">
       <code>{{question.code_field}}</code>
-    </pre>
-  <div>
+  </pre>
+  <div class="tag_div">
     <a [routerLink]="['/tags', tag.id]" class="tag">{{ tag.name }}</a>
   </div>
 </div>
