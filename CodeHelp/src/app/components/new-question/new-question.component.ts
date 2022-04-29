@@ -65,7 +65,7 @@ export class NewQuestionComponent implements OnInit {
       is_active: true,
       code_field: this.codefield,
     };
-    // console.log(this.question);
+     console.log(this.question);
     // console.log(this.tag);
 
     this.service
