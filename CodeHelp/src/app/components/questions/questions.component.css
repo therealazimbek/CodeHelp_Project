@@ -13,6 +13,14 @@
     color:white;
     text-decoration: none;
 }
+.alert{
+    color:red;
+}
 .container{
     min-height: 70vh;
+    width:1000px;
+    text-align: left;
+}
+.question{
+    margin-top:10px;
 }

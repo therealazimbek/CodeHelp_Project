@@ -10,7 +10,7 @@
     <div class="block">
       <h4>Body</h4>
       <h6>Include all the information about your question</h6>
-      <textarea cols="30" rows="10" id="body" [(ngModel)]="body" [ngModelOptions]="{ standalone: true }" 
+      <textarea cols="30" rows="10" id="body" [(ngModel)]="body" [ngModelOptions]="{ standalone: true }"
                 placeholder="I have a problem with realization!"></textarea>
       <p *ngIf="body_empty">Explain the question!</p>
     </div>
@@ -25,8 +25,8 @@
         <h4>User</h4>
         <h6>Choose a user</h6>
         <select [(ngModel)]="user" [ngModelOptions]="{ standalone: true }">
-          <option>none</option>
-          <option *ngFor="let u of users">{{ u.first_name }} {{ u.second_name }}</option>
+          <option>None</option>
+          <option *ngFor="let u of users">{{ u.id }}</option>
         </select>
         <p *ngIf="user_empty">Choose the user!</p>
       </div>
@@ -34,8 +34,8 @@
         <h4>Tag</h4>
         <h6>Choose a tag of your question</h6>
         <select [(ngModel)]="tag" [ngModelOptions]="{ standalone: true }">
-          <option>none</option>
-          <option *ngFor="let t of tags">{{ t.name }}</option>
+          <option>None</option>
+          <option *ngFor="let t of tags">{{ t.id }}</option>
         </select>
         <p *ngIf="tag_empty">Choose the tag!</p>
       </div>

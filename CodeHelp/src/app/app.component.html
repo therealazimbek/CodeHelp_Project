@@ -30,7 +30,7 @@
     </ul>
 
     <div class="col-md-3 text-end">
-      <div *ngIf="logged">
+      <div *ngIf="!logged">
         <button (click)="goToPage('login')" type="button" class="btn btn-outline-primary me-2">
           Login
         </button>
@@ -38,7 +38,7 @@
           Sign-up
         </button>
       </div>
-      <div *ngIf="!logged">
+      <div *ngIf="logged">
         <button (click)="logout()" type="button" class="btn btn-primary">
           Logout
         </button>

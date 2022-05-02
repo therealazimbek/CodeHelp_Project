@@ -11,34 +11,38 @@ import { AuthToken } from '../models';
   providedIn: 'root',
 })
 export class ServiceService {
-  private apiURL = 'http://localhost:5000';
-  private base_url='http://localhost:8000';
+  //private apiURL = 'http://localhost:5000';
+  private base_url='http://localhost:8000/api';
 
   constructor(private http: HttpClient) {}
 
   getTags(): Observable<Tags[]> {
-    return this.http.get<Tags[]>(`${this.apiURL}/tags`);
+    return this.http.get<Tags[]>(`${this.base_url}/tags`);
   }
 
   getTag(id: number): Observable<Tags> {
-    return this.http.get<Tags>(`${this.apiURL}/tags/${id}/`);
+    return this.http.get<Tags>(`${this.base_url}/tags/${id}/`);
   }
 
-  getMessages(): Observable<Messages[]> {
-    return this.http.get<Messages[]>(`${this.apiURL}/messages`);
+  getMessages(id:number): Observable<Messages[]> {
+    return this.http.get<Messages[]>(`${this.base_url}/questions/${id}/messages`);
   }
 
   getUsers(): Observable<Users[]> {
-    return this.http.get<Users[]>(`${this.apiURL}/users`);
+    return this.http.get<Users[]>(`${this.base_url}/users`);
   }
 
   getUser(id: number): Observable<Users> {
-    return this.http.get<Users>(`${this.apiURL}/users/${id}/`);
+    return this.http.get<Users>(`${this.base_url}/users/${id}/`);
   }
 
-  login(username:string,password:string):Observable<AuthToken>{
-    return this.http.post<AuthToken>(`${this.base_url}/api/login/`,{
-      username,password
+  login(email:string,password:string):Observable<AuthToken>{
+    return this.http.post<AuthToken>(`${this.base_url}/login/`,{
+      email,password
     })
+  }
+
+  changePassword(id:number,old_password:string,password:string,password2:string):Observable<null>{
+    return this.http.put<any>(`${this.base_url}/users/${id}/change_password/`,{old_password,password,password2});
   }
 }

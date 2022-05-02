@@ -1,7 +1,8 @@
-<div *ngIf="user">
+<div *ngIf="user" class="main">
+  <button class="btn btn-primary"> <a routerLink="/users/{{user.id}}/change_password"> Change password </a></button>
   <button backButton class="btn btn-dark">Back</button>
   <h4>{{ user.first_name }} {{ user.second_name }}</h4>
-  <img src="{{ user.avatar }}" alt="Avatar" />
+  <img src="{{ user.avatar }}" alt="Avatar"/>
   <h6>@{{ user.username }}</h6>
   <p>{{ user.email }}</p>
   <p *ngIf="user.bio">{{ user.bio }}</p>

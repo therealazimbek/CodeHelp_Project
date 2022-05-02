@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   title = 'CodeHelp';
-  logged=true; //while backend is not ready, setting it true to let Login, Sign up buttons be showed
+  logged=false; 
 
   constructor(private router: Router){
   }
@@ -26,5 +26,6 @@ export class AppComponent implements OnInit{
   logout(){
     this.logged=false;
     localStorage.removeItem('access');
+    window.location.reload();
   }
 }

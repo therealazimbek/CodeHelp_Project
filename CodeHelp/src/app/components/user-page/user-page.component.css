@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+    color:white;
+}
+img{
+    width:200px;
+}
+.main{
+    text-align: center;
+    min-height: 70vh;
+}
+button{
+    margin-right:30px;
+    margin-bottom: 20px;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/services/service.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -8,24 +10,26 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  username='';
+  email='';
   password='';
   logged=true;
 
-  constructor(private _service:ServiceService) { }
+  constructor(private _service:ServiceService,private location:Location) { }
 
   ngOnInit(): void {
   }
   login(){
-    this._service.login(this.username,this.password).subscribe(
+    this._service.login(this.email,this.password).subscribe(
       (data)=>{
+        this.logged=true;
         localStorage.setItem('access',data.access);
-        this.username='';
+        this.email='';
         this.password='';
-        document.location.reload();
+        this.location.back();
       },
       (error)=>{
         this.logged=false;
+        console.log("Error(");
       }
     )
   }

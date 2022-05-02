@@ -11,19 +11,29 @@
 }
 
 .mcard {
-  color: var(--black-500);
-  display: flex;
-  padding: 6px;
+  background-color: darkgrey;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid silver;
+  text-align: center;
+  width:200px;
+  height:75px;
+  margin:20px;
 }
 
 .body {
-  display: flex;
-  flex-direction: column;
+  position:relative;
+  bottom:45px;
+  left:10px;
   margin-left: 10px;
 }
 
 a {
-  font-size: 14px;
+  font-size: 20px;
+  text-decoration: none;
+  color:white;
 }
 
 p {
