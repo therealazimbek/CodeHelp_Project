@@ -14,6 +14,7 @@ import { UsersComponent } from './components/users/users.component';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { EditQuestionComponent } from './components/edit-question/edit-question.component';
+import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'users/:userID', component: UserPageComponent },
+  { path: 'users/:userID/change_password', component: PasswordChangeComponent },
   { path: 'users', component: UsersComponent },
   { path: 'about', component: AboutComponent },
   { path: 'newquestion', component: NewQuestionComponent },

@@ -17,7 +17,7 @@ export class EditQuestionComponent implements OnInit {
   question: Questions | undefined;
   tags: Tags[] = [];
   users: Users[] = [];
-  id = 0
+  id = 0;
   title = '';
   body = '';
   tag: number = -1;
@@ -87,14 +87,9 @@ export class EditQuestionComponent implements OnInit {
       is_active: true,
       code_field: this.codefield,
     };
-    console.log(this.question);
-    console.log(this.id);
 
-    this.service
-      .updateQuestion(this.question)
-      .subscribe((question) => (this.question = question));
+    this.service.updateQuestion(this.question).subscribe((question) => {console.log(this.question);});
     this.router.navigateByUrl(`/questions/${this.question?.id}`)
-
   }
 
 }

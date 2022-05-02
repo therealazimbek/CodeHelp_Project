@@ -17,7 +17,7 @@ export class NewQuestionComponent implements OnInit {
   users: Users[] = [];
   title = '';
   body = '';
-  tag: number = -1;
+  tag:number =-1;
   codefield = '';
   user: number = -1;
   user_empty = false;
@@ -25,6 +25,7 @@ export class NewQuestionComponent implements OnInit {
   body_empty = false;
   tag_empty = false;
   isCompleted = false;
+  questionsNumber=0;
 
   constructor(
     private service: QuestionsService,
@@ -35,6 +36,7 @@ export class NewQuestionComponent implements OnInit {
   ngOnInit(): void {
     this.tagService.getTags().subscribe((tags) => (this.tags = tags));
     this.tagService.getUsers().subscribe((users) => (this.users = users));
+    this.service.getQuestions().subscribe((questions) => {this.questionsNumber = questions.length});
   }
 
   check() {
@@ -55,7 +57,7 @@ export class NewQuestionComponent implements OnInit {
   }
   newquestion() {
     this.question = {
-      id: 41,
+      id:this.questionsNumber+1,
       title: this.title,
       body: this.body,
       user: +this.user,
@@ -63,15 +65,11 @@ export class NewQuestionComponent implements OnInit {
       created_date: new Date(),
       updated_date: new Date(),
       is_active: true,
-      code_field: this.codefield,
+      code_field: this.codefield
     };
-     console.log(this.question);
-    // console.log(this.tag);
 
-    this.service
-      .addQuestion(this.question)
-      .subscribe((question) => (this.question = question));
-    this.router.navigateByUrl('questions').then()
+    this.service.addQuestion(this.question).subscribe((question) => {console.log(question)});
+    this.router.navigateByUrl('questions').then();
   }
   back() {}
 }

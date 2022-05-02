@@ -1,9 +1,9 @@
-.question {
-  background-color: azure;
-  padding: 10px;
-  border-radius: 10px;
+.mainBody{
+  min-height: 70vh;
+  width:1000px;
+  position:relative;
+  left:150px;
 }
-
 a {
   font-size: 12px;
   text-decoration: none;
@@ -17,13 +17,6 @@ p,
 
 p.body {
   font-size: 16px;
-}
-
-p.username {
-  color: white;
-  background-color: black;
-  padding: 5px;
-  border-radius: 5px;
 }
 
 p a {
@@ -44,4 +37,55 @@ p a {
 button{
   margin-right:30px;
   margin-bottom: 20px;
+}
+.question {
+  background-color: azure;
+  padding: 10px;
+  border-radius: 10px;
+  border:2px solid rgb(204,204,204);
+}
+.qTitle{
+  color:#3774A4;
+}
+.qUserTag{
+  position:relative;
+  border:2px solid rgb(204,204,204);
+  border-radius: 10px;
+  width:150px;
+  height:80px;
+  text-align: center;
+  padding:7px;
+  background-color: white;
+  left:820px;
+  margin-top: 10px;
+}
+.qUserTagBlock{
+  position:relative;
+  top:1px;
+  display: block;
+  margin-bottom: 10px;
+}
+.qUserTagLink{
+  font-size: 15px;
+}
+.qUser {
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+}
+.qBody{
+  margin-top:10px;
+  margin-bottom: 15px;
+  font-weight:normal;
+}
+.message{
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+  border:2px solid rgb(204,204,204);
+  margin-top: 20px;
+}
+pre{
+  width:700px;
 }

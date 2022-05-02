@@ -7,27 +7,28 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class QuestionsService {
-  private apiURL = 'http://localhost:5000/questions';
+  //private apiURL = 'http://localhost:5000/questions';
+  private base_url='http://localhost:8000/api/questions';
 
   constructor(private http: HttpClient) {}
 
   getQuestions(): Observable<Questions[]> {
-    return this.http.get<Questions[]>(this.apiURL);
+    return this.http.get<Questions[]>(this.base_url);
   }
 
   getQuestion(id: number): Observable<Questions> {
-    return this.http.get<Questions>(`${this.apiURL}/${id}/`);
+    return this.http.get<Questions>(`${this.base_url}/${id}/`);
   }
 
-  deleteQuestion(question: Questions): Observable<any> {
-    return this.http.delete(`${this.apiURL}/${question.id}`);
+  deleteQuestion(id:number): Observable<any> {
+    return this.http.delete(`${this.base_url}/${id}/`);
   }
 
   updateQuestion(question: Questions): Observable<Questions> {
-    return this.http.put<Questions>(`${this.apiURL}/${question.id}`, question);
+    return this.http.put<Questions>(`${this.base_url}/${question.id}/`, question);
   }
 
   addQuestion(question: Questions): Observable<Questions> {
-    return this.http.post<Questions>(`${this.apiURL}`, question);
+    return this.http.post<Questions>(`${this.base_url}/`, question);
   }
 }

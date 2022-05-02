@@ -1,16 +1,26 @@
 .container {
   width: 100%;
   min-height: 70vh;
-  display: grid;
 }
 
 .mcard {
-  display: flex;
-  flex-direction: column;
-  padding: 2px;
+  background-color: darkgrey;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: middle;
   border: 1px solid silver;
-  border-radius: 3px;
   text-align: center;
+  width:150px;
+  height:75px;
+  margin:20px;
+}
+a{
+  text-decoration: none;
+  position:relative;
+  top:15px;
+  color: white;
+  font-size: 25px;
 }
 
 .mcard:hover {

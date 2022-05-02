@@ -9,7 +9,8 @@ import { ServiceService } from 'src/app/services/service.service';
   styleUrls: ['./questions.component.css'],
 })
 export class QuestionsComponent implements OnInit {
-  logged=true;      //while backend is not ready, setting it true to let AskQuestion button be showed
+  logged=false;
+  alertF=false;     
   questions: Questions[] | undefined;
 
   constructor(private service: QuestionsService) {}
@@ -28,6 +29,9 @@ export class QuestionsComponent implements OnInit {
         );
       });
     });
+  }
+  alert(){
+    this.alertF=true;
   }
 }
 

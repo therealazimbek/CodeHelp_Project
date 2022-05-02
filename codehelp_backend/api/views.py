@@ -40,12 +40,6 @@ class QuestionListView(generics.ListCreateAPIView):
     serializer_class = QuestionSerializer
 
 
-# class QuestionDetailView(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Question.objects.all()
-#     permission_classes = [AllowAny]
-#     serializer_class = QuestionSerializer
-
-
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([AllowAny])
 def question_detail(request, pk):
