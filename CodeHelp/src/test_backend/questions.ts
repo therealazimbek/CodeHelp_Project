@@ -6,8 +6,8 @@ export interface Questions {
   body: string;
   user: number;
   tag: number;
-  created_date: Date;
-  updated_date: Date;
+  created: Date;
+  updated: Date;
   is_active: boolean;
   code_field: string;
 }

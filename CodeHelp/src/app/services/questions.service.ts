@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Questions, question_list } from '../../test_backend/questions';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { Router } from "@angular/router";
+
+let helper = new JwtHelperService()
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +14,8 @@ export class QuestionsService {
   //private apiURL = 'http://localhost:5000/questions';
   private base_url='http://localhost:8000/api/questions';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   getQuestions(): Observable<Questions[]> {
     return this.http.get<Questions[]>(this.base_url);

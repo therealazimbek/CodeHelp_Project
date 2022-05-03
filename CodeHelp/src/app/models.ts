@@ -8,8 +8,8 @@ export interface Messages {
     user: number;
     score: number;
     question: number;
-    created_date: Date;
-    updated_date: Date;
+    created: Date;
+    updated: Date;
     is_best_answer: boolean;
     code_field: string;
 }
@@ -19,8 +19,8 @@ export interface Questions {
     body: string;
     user: number;
     tag: number;
-    created_date: Date;
-    updated_date: Date;
+    created: Date;
+    updated: Date;
     is_active: boolean;
     code_field: string;
 }

@@ -12,9 +12,9 @@
         <div class="d-flex gap-2 w-100 justify-content-between">
           <div>
             <h6 class="mb-0">{{question.title}}</h6>
-  <!--          <p class="mb-0 opacity-75">{{question.description}}</p>-->
+<!--            <p class="mb-0 opacity-75">{{question.description}}</p>-->
           </div>
-          <small class="opacity-50 text-nowrap">{{question.created_date | date: 'HH:mm, dd/MM/yyyy'}}</small>
+          <small class="opacity-50 text-nowrap">{{question.created | date: 'HH:mm, dd/MM/yyyy'}}</small>
         </div>
       </a>
       <a routerLink="/questions/{{question.id}}/edit"></a>

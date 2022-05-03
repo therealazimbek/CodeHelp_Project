@@ -25,7 +25,8 @@ export class TagDetailComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const tagIDFromRoute = Number(routeParams.get('tagID'));
-    this.service.getTag(tagIDFromRoute).subscribe(
+    const tagNameFromRoute = String(routeParams.get('tagName'));
+    this.service.getTag(tagNameFromRoute).subscribe(
       (tag) => {
         this.tag = tag;
         this.questionService.getQuestions().subscribe(

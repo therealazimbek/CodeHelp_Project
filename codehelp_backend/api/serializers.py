@@ -1,8 +1,18 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import *
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['user'] = user.username
+        return token
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -135,6 +145,8 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class MessageSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField()
+    user_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Message

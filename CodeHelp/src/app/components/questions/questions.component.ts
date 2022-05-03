@@ -10,7 +10,7 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class QuestionsComponent implements OnInit {
   logged=false;
-  alertF=false;     
+  alertF=false;
   questions: Questions[] | undefined;
 
   constructor(private service: QuestionsService) {}
@@ -24,8 +24,8 @@ export class QuestionsComponent implements OnInit {
       this.questions = questions;
       this.questions.sort((q1, q2) => {
         return (
-          new Date(q2.created_date).getTime() -
-          new Date(q1.created_date).getTime()
+          new Date(q2.created).getTime() -
+          new Date(q1.created).getTime()
         );
       });
     });

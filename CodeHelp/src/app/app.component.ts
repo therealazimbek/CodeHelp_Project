@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   title = 'CodeHelp';
-  logged=false; 
+  logged=false;
 
   constructor(private router: Router){
   }
@@ -19,13 +19,13 @@ export class AppComponent implements OnInit{
   }
 
   goToPage(page: string) {
-    this.router.navigate([`${page}`]).then(r => {
-      console.log(r)})
+    this.router.navigate([`${page}`]).then()
   }
 
   logout(){
     this.logged=false;
     localStorage.removeItem('access');
-    window.location.reload();
+    this.router.navigateByUrl('questions').then()
+    // location.reload();
   }
 }

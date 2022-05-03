@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from "./services/auth-guard.service";
 
 import { HomeComponent } from './components/home/home.component';
 import { QuestionsComponent } from './components/questions/questions.component';
@@ -20,16 +21,16 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'questions', component: QuestionsComponent },
   { path: 'questions/:questionID', component: QuestionDetailComponent },
-  { path: 'questions/:questionID/edit', component: EditQuestionComponent },
+  { path: 'questions/:questionID/edit', component: EditQuestionComponent, canActivate: [AuthGuardService], },
   { path: 'tags', component: TagsComponent },
-  { path: 'tags/:tagID', component: TagDetailComponent },
+  { path: 'tags/:tagName', component: TagDetailComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'users/:userID', component: UserPageComponent },
-  { path: 'users/:userID/change_password', component: PasswordChangeComponent },
+  { path: 'users/:username', component: UserPageComponent, },
+  { path: 'users/:username/change_password', component: PasswordChangeComponent, canActivate: [AuthGuardService], },
   { path: 'users', component: UsersComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'newquestion', component: NewQuestionComponent },
+  { path: 'newquestion', component: NewQuestionComponent, canActivate: [AuthGuardService], },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotFoundPageComponent },
 ];

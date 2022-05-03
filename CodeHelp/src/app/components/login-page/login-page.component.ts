@@ -12,11 +12,19 @@ export class LoginPageComponent implements OnInit {
 
   email='';
   password='';
-  logged=true;
+  logged=false;
+  error=false;
 
-  constructor(private _service:ServiceService,private location:Location) { }
+  constructor(private _service:ServiceService,
+              private location:Location,
+              private router: Router) { }
 
   ngOnInit(): void {
+    const access=localStorage.getItem('access');
+    if (access) this.logged=true;
+    if (this.logged) {
+      this.router.navigateByUrl('questions').then()
+    }
   }
   login(){
     this._service.login(this.email,this.password).subscribe(
@@ -25,10 +33,10 @@ export class LoginPageComponent implements OnInit {
         localStorage.setItem('access',data.access);
         this.email='';
         this.password='';
-        this.location.back();
+        location.reload();
       },
       (error)=>{
-        this.logged=false;
+        this.error=true;
         console.log("Error(");
       }
     )

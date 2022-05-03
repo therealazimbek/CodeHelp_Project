@@ -1,12 +1,17 @@
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import *
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics, status
 from rest_framework import mixins
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import *
 from .serializers import *
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
 class UserView(generics.ListCreateAPIView):
@@ -23,15 +28,17 @@ class UserView(generics.ListCreateAPIView):
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = UpdateUserSerializer
+    lookup_field = 'username'
 
 
 class ChangePasswordView(generics.UpdateAPIView):
 
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated,]
+    permission_classes = [IsAuthenticated]
     serializer_class = ChangePasswordSerializer
+    lookup_field = 'username'
 
 
 class QuestionListView(generics.ListCreateAPIView):
@@ -41,7 +48,7 @@ class QuestionListView(generics.ListCreateAPIView):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def question_detail(request, pk):
     try:
         question = Question.objects.get(id=pk)
@@ -63,7 +70,7 @@ def question_detail(request, pk):
 
 
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def question_messages(request, pk):
     try:
         question = Question.objects.get(id=pk)
@@ -101,3 +108,9 @@ def tag_list(request):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
+
+class TagDetailView(generics.RetrieveDestroyAPIView):
+    queryset = Tag.objects.all()
+    lookup_field = 'name'
+    serializer_class = TagSerializer

@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './AuthInterceptor';
+
+import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
+import { AuthGuardService } from "./services/auth-guard.service";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +21,6 @@ import { TagDetailComponent } from './components/tag-detail/tag-detail.component
 import { BackButtonDirective } from './directives/back-button.directive';
 import { UsersComponent } from './components/users/users.component';
 import { NewQuestionComponent } from './components/new-question/new-question.component';
-import { FormsModule } from '@angular/forms';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { EditQuestionComponent } from './components/edit-question/edit-question.component';
 import { PasswordChangeComponent } from './components/password-change/password-change.component';
@@ -42,13 +45,14 @@ import { PasswordChangeComponent } from './components/password-change/password-c
     EditQuestionComponent,
     PasswordChangeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule],
   providers: [
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true
-    }
+    },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService
   ],
   bootstrap: [AppComponent],
 })

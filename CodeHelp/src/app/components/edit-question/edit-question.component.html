@@ -23,33 +23,24 @@
       </div>
       <div class="block">
         <div class="sub_block">
-          <h4>User</h4>
-          <h6>Choose a user</h6>
-          <select [(ngModel)]="user" [ngModelOptions]="{ standalone: true }">
-            <option>{{user}}</option>
-            <option *ngFor="let u of users">{{ u.id }}</option>
-          </select>
-          <p *ngIf="user_empty">Choose the user!</p>
-        </div>
-        <div class="sub_block">
           <h4>Tag</h4>
           <h6>Choose a tag of your question</h6>
-          <select [(ngModel)]="tag" [ngModelOptions]="{ standalone: true }">
-            <option>{{this.tag}}</option>
-            <option *ngFor="let t of tags">{{ t.id }}</option>
+          <select [(ngModel)]="tagFromForm" [ngModelOptions]="{ standalone: true }">
+            <option>{{this.tag}}: {{ this.tagName }}</option>
+            <option *ngFor="let t of tags">{{ t.id }}: {{ t.name }}</option>
           </select>
           <p *ngIf="tag_empty">Choose the tag!</p>
         </div>
       </div>
-      <button (click)="check()" class="btn btn-lg btn-primary" id="submit">
+      <button type="submit" (click)="check()" class="btn btn-lg btn-primary" id="submit">
          Submit
       </button>
       <div *ngIf="isCompleted">
         <h5>Are you sure there is no such questions on our site?</h5>
-        <button (click)="editquestion()" class="btn btn-lg btn-primary subm_part">
+        <button type="submit" (click)="editquestion()" class="btn btn-lg btn-primary subm_part">
           Yes
         </button>
-        <button (click)="recheck()" class="subm_part btn btn-lg btn-primary">
+        <button type="submit" (click)="recheck()" class="subm_part btn btn-lg btn-primary">
           No, need to change my question
         </button>
       </div>

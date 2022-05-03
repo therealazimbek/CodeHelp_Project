@@ -1,8 +1,15 @@
 .mainBody{
-  min-height: 70vh;
-  width:1000px;
-  position:relative;
-  left:150px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
 }
 a {
   font-size: 12px;
@@ -48,7 +55,7 @@ button{
   color:#3774A4;
 }
 .qUserTag{
-  position:relative;
+  /*position:relative;*/
   border:2px solid rgb(204,204,204);
   border-radius: 10px;
   width:150px;
@@ -56,7 +63,7 @@ button{
   text-align: center;
   padding:7px;
   background-color: white;
-  left:820px;
+  /*left:820px;*/
   margin-top: 10px;
 }
 .qUserTagBlock{

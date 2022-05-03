@@ -1,24 +1,42 @@
 <div class="mainBody">
   <button backButton class="btn btn-dark">Back</button>
-  <button class="btn btn-primary" (click)="edit()" *ngIf="logged">Update</button>
-  <button class="btn btn-primary" (click)="delete()" *ngIf="logged">Delete</button>
+  <div *ngIf="usernameFromToken && usernameFromToken === user.username">
+    <button class="btn btn-primary" (click)="edit()" *ngIf="logged">Update</button>
+    <button class="btn btn-primary" (click)="delete()" *ngIf="logged">Delete</button>
+  </div>
+
   <div *ngIf="question" class="question">
       <h2 class="qTitle">{{ question.title }}</h2>
-      <h5>{{ question.created_date | date: "HH:mm, dd/MM/yyyy" }}</h5><br/>
+      <h5>{{ question.created | date: "HH:mm, dd/MM/yyyy" }}</h5><br/>
       <hr>
       <h4 class="qBody">{{ question.body }}</h4><br/>
       <pre *ngIf="question.code_field"><code>{{question.code_field}}</code></pre>
       <div class="qUserTag">
-        <span class="qUserTagBlock">User: <a [routerLink]="['/users', user.id]" class="qUserTagLink qUser">{{ user.username }}</a></span>
-        <span class="qUserTagBlock">Tag: <a [routerLink]="['/tags', tag.id]" class="qUserTagLink tag">{{ tag.name }}</a></span>
+        <span class="qUserTagBlock">User: <a [routerLink]="['/users', user.username]" class="qUserTagLink qUser">@{{ user.username }}</a></span>
+        <span class="qUserTagBlock">Tag: <a [routerLink]="['/tags', tag.name]" class="qUserTagLink tag">{{ tag.name }}</a></span>
       </div>
   </div>
+
+  <div *ngIf="usernameFromToken" class="message">
+    <h3>Your answer</h3>
+    <form (ngSubmit)="addMessage()">
+      <div>
+        <textarea cols="50" rows="5" [(ngModel)]="body" [ngModelOptions]="{ standalone: true }" type="text" name="" id="text" placeholder="type your answer..."></textarea>
+      </div>
+      <div>
+        <textarea cols="80" rows="5" [(ngModel)]="code" [ngModelOptions]="{ standalone: true }" type="text" name="" id="code" placeholder="type your code..."></textarea>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Answer</button>
+    </form>
+  </div>
+
   <div *ngFor="let message of messages" class="message">
-      <a [routerLink]="['/users', message.user]" class="qUser">{{ message.user }}</a>
-      {{ message.created_date | date: "HH:mm, dd/MM/yyyy" }}
+      <a [routerLink]="['/users', message.user]" class="qUser">@{{ message.user }}</a>
+      {{ message.created | date: "HH:mm, dd/MM/yyyy" }}
       <h4 class="qBody">{{ message.body }}</h4>
-      <pre *ngIf="message.code_field"> 
-        <code>{{message.code_field}}</code>
+      <pre *ngIf="message.code_field"><code>{{message.code_field}}</code>
       </pre>
   </div>
 </div>

@@ -6,6 +6,8 @@ import { ServiceService } from 'src/app/services/service.service';
 import { Users } from 'src/test_backend/users';
 import { Router } from "@angular/router";
 
+import { JwtHelperService } from "@auth0/angular-jwt";
+
 @Component({
   selector: 'app-new-question',
   templateUrl: './new-question.component.html',
@@ -14,41 +16,46 @@ import { Router } from "@angular/router";
 export class NewQuestionComponent implements OnInit {
   question: Questions | undefined;
   tags: Tags[] = [];
-  users: Users[] = [];
+  user: Users | undefined;
   title = '';
   body = '';
-  tag:number =-1;
+  tag: string = '';
   codefield = '';
-  user: number = -1;
-  user_empty = false;
   title_empty = false;
   body_empty = false;
   tag_empty = false;
   isCompleted = false;
   questionsNumber=0;
 
+  tokenPayload: any;
+  usernameFromToken: string | undefined;
+
   constructor(
     private service: QuestionsService,
     private tagService: ServiceService,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) {}
 
   ngOnInit(): void {
+    this.getUsernameFromTokenDecoded();
     this.tagService.getTags().subscribe((tags) => (this.tags = tags));
-    this.tagService.getUsers().subscribe((users) => (this.users = users));
     this.service.getQuestions().subscribe((questions) => {this.questionsNumber = questions.length});
+    this.tagService.getUser(this.usernameFromToken!).subscribe(user => this.user = user)
+
+    if (this.usernameFromToken == undefined) {
+      this.router.navigateByUrl('questions').then()
+    }
   }
 
   check() {
     this.title_empty = this.title == '';
     this.body_empty = this.body == '';
-    this.tag_empty = this.tag === -1;
-    this.user_empty = this.user === -1;
+    this.tag_empty = this.tag == '';
     if (
       !this.title_empty &&
       !this.body_empty &&
-      !this.tag_empty &&
-      !this.user_empty
+      !this.tag_empty
     )
       this.isCompleted = true;
   }
@@ -60,16 +67,24 @@ export class NewQuestionComponent implements OnInit {
       id:this.questionsNumber+1,
       title: this.title,
       body: this.body,
-      user: +this.user,
-      tag: +this.tag,
-      created_date: new Date(),
-      updated_date: new Date(),
+      user: this.user?.id!,
+      tag: +this.tag[0],
+      created: new Date(),
+      updated: new Date(),
       is_active: true,
       code_field: this.codefield
     };
 
-    this.service.addQuestion(this.question).subscribe((question) => {console.log(question)});
+    this.service.addQuestion(this.question!).subscribe((question) => {console.log(question)});
     this.router.navigateByUrl('questions').then();
   }
   back() {}
+
+  getUsernameFromTokenDecoded() {
+    let token = localStorage.getItem('access');
+    if (token) {
+      this.tokenPayload = JSON.stringify(this.jwtHelper.decodeToken(token));
+      this.usernameFromToken = JSON.parse(this.tokenPayload).user;
+    }
+  }
 }
