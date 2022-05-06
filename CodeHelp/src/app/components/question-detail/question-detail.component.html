@@ -1,5 +1,5 @@
 <div class="mainBody">
-  <button backButton class="btn btn-dark">Back</button>
+  <button backButton class="btn btn-dark back">Back</button>
   <div *ngIf="usernameFromToken && usernameFromToken === user.username">
     <button class="btn btn-primary" (click)="edit()" *ngIf="logged">Update</button>
     <button class="btn btn-primary" (click)="delete()" *ngIf="logged">Delete</button>

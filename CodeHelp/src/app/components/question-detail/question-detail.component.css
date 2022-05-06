@@ -4,12 +4,13 @@
   flex-direction: column;
   width: 80%;
   justify-content: center;
-  align-items: center;
+  /*align-items: flex-start;*/
 }
 
 .question {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 a {
   font-size: 12px;
@@ -92,7 +93,12 @@ button{
   border-radius: 10px;
   border:2px solid rgb(204,204,204);
   margin-top: 20px;
+  width: 100%;
 }
 pre{
   width:700px;
+}
+
+.back {
+  width: 80px;
 }
